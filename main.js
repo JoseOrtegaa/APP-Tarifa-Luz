@@ -18,12 +18,12 @@ const getData = async () => {
 };
 getData();
 
-const button = document.querySelector("button")
+const button = document.querySelector('button');
 
 async function loadData(e) {
   try {
     //Cargamos la caché local en localStorage
-    const dataLocal = JSON.parse(localStorage.getItem("data"));
+    const dataLocal = JSON.parse(localStorage.getItem('data'));
 
     let data;
 
@@ -36,10 +36,10 @@ async function loadData(e) {
       alert(`Pedimos datos al servidor`);
       data = await getData();
       localStorage.setItem(
-        "data",
+        'data',
         JSON.stringify({
           lastUpdated: Date.now(),
-          data: data
+          data: data,
         })
       );
     }
@@ -89,23 +89,22 @@ function getOnlyHour() {
 }
 //Obtenemos el menor precio de luz
 const min = (array) => {
-
   const p = document.querySelector('#precio-bajo');
 
   const minimo = Math.min(...array);
 
   const hourPrice = array.indexOf(minimo);
 
-  const hourLow = document.querySelector('#hourLow')
+  const hourLow = document.querySelector('#hourLow');
 
-  hourLow.innerHTML = ` / ${getOnlyHour()[hourPrice]}H`
+  hourLow.innerHTML = ` / ${getOnlyHour()[hourPrice]}H`;
 
   p.textContent = minimo;
 
   return minimo;
 };
 
-min(getOnlyPrice())
+min(getOnlyPrice());
 
 //Obtenemos el mayor precio de luz
 const max = (array) => {
@@ -115,16 +114,16 @@ const max = (array) => {
 
   const hourPrice = array.indexOf(maximo);
 
-  const hourHight = document.querySelector('#hourHight')
+  const hourHight = document.querySelector('#hourHight');
 
-  hourHight.innerHTML = ` / ${getOnlyHour()[hourPrice]}H`
+  hourHight.innerHTML = ` / ${getOnlyHour()[hourPrice]}H`;
 
   p.textContent = maximo;
 
   return maximo;
 };
 
-max(getOnlyPrice())
+max(getOnlyPrice());
 
 const pPrice = document.querySelector('#precio-act');
 
@@ -136,24 +135,24 @@ const currentPrice = () => {
   let seconds = time.getSeconds();
 
   if (seconds < 10) {
-    seconds = `0${seconds}`
+    seconds = `0${seconds}`;
   } else {
-    seconds = `${seconds}`
+    seconds = `${seconds}`;
   }
 
   if (minutes < 10) {
-    minutes = `0${minutes}`
+    minutes = `0${minutes}`;
   } else {
-    minutes = `${minutes}`
+    minutes = `${minutes}`;
   }
 
   if (hour < 10) {
-    hour = `0${hour}`
+    hour = `0${hour}`;
   } else {
-    hour = `${hour}`
+    hour = `${hour}`;
   }
 
-  const time_act = `${hour}:${minutes}:${seconds}`
+  const time_act = `${hour}:${minutes}:${seconds}`;
 
   const h2 = document.querySelector('#hora-act');
 
@@ -166,7 +165,7 @@ const currentPrice = () => {
   return getProperties()[hour][1];
 };
 
-setInterval(currentPrice, 1000)
+setInterval(currentPrice, 1000);
 
 //Convertimos el precio actual de MWh a kWh
 function convertPrice(currentHour) {
@@ -181,7 +180,8 @@ const frag = document.createDocumentFragment();
 //Mediante esta funcion creamos los divs corrrespondiente para cada objeto
 const dateObj = (priceObj) => {
   //Array con informacion de cada objeto, su nombre y su consumo de kWh/h
-  const arrayProducts = [{
+  const arrayProducts = [
+    {
       name: 'Ordenador',
       price: '0.019',
     },
@@ -214,9 +214,9 @@ const dateObj = (priceObj) => {
                       <img src="./img/${key.name}.jpg" alt="Imagen de ${
       key.name
     }" class="img">
-                      <p class="pProducts">El consumo actual durante una hora es de <strong>:${
-                        (key.price * priceObj).toFixed(3)
-                      }€<strong></p>
+                      <p class="pProducts">El consumo actual durante una hora es de <strong>:${(
+                        key.price * priceObj
+                      ).toFixed(3)}€<strong></p>
                       `;
 
     //Agregamos cada div al fragmento
@@ -230,4 +230,4 @@ const dateObj = (priceObj) => {
 dateObj(convertPrice(currentPrice()));
 
 //Agregamos oyentes al boton
-button.addEventListener("click", loadData);
+button.addEventListener('click', loadData);

@@ -73,6 +73,10 @@ h2 > span{
     color: green;
 }
 
+#precio-alto{
+    color: red;
+}
+
 h3{
     grid-area: h3;
     font-size: 2rem;
@@ -115,10 +119,24 @@ p{
     border-bottom: 1px solid #000;
 }
 
+.main > div{
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+div > .img{
+    max-width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}    
 
 img{
-    width: 100%;
-    height: 100%;
+    max-width: 50%;
+    height: auto;
     background-color: rgba(185, 185, 185, 0.3);
     border: solid 1px #000;
     border-radius: 10px;
@@ -126,7 +144,6 @@ img{
 }
 
 button{
-    max-width: 100%;
     background-color: #000;
     color: #fff;
     border: none;
@@ -146,5 +163,12 @@ button:hover{
     transition: all 2.3s ease-in;
 }
 
-
+section > button{
+    width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
 
